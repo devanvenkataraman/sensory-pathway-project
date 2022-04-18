@@ -81,7 +81,7 @@ class ChapterOne extends React.Component{
   }
   
   render(){
-    const part0 = <p>INSERT NEW OPENER HERE</p>;
+    const part0 = <p>insert starter here</p>;
     
     const question0 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>I think a few more minutes won't harm me</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>No way I'm spending the day on my bed</button></p>;
     const part1Bad = <p>P1BAD</p>;
@@ -176,7 +176,7 @@ class Story extends React.Component{
     if(this.state.game==false){
       return(
             <header className="text-center bg-warning jumbotron">
-              CYOA Test
+              Sensory Pathway Project
             </header>
      )
     }
@@ -208,8 +208,8 @@ class Story extends React.Component{
               this.state.game==true ?
                 this.renderStory()
                 :
-                <p>Welcome to my "Choose Your Own Adventure" page!<br/><br/>
-              It was made with React.js and it uses WebStorage to save your progress (that means your progress will be lost if you delete your browser's history).
+                <p>Welcome to my Sensory Pathway Project.<br/><br/>
+                  For this interactive game I've coded, you will simulate "being" a visual stimulus and track your progress from initial sensation to the final stages of interpretation! To play, simply answer the questions to try and correctly identify steps along the visual pathway. The word bank on the left will not provide the EXACT answers you need, but it will provide some helpful clues along the way! Click on any term to reveal more information. Finally, in this game, there are NO second chances! If you make a wrong selection, you'll have to refresh the page and start over! Get started below and good luck!
                    <br/><br/>
                    <center>
                     <button className="btn" onClick={() => this.startGame()}>Start game</button> <button className="btn" onClick={() => this.loadGame()}>Load Game</button>

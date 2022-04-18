@@ -6,5 +6,5 @@ The template for this CYAO game was sourced from Lucas Olivera, the template can
 
 Deployed via GitHub Pages.
 
-### Check it out at
+### Code Template
 https://github.com/LMOlivera/CYOAwithReact
