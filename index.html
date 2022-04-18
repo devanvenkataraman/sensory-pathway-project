@@ -64,7 +64,7 @@ class HUD extends React.Component{
             <br/>
             You are on your way to the final stages of interpretation
             <br/><br/>
-            <center><b>Inventory</b></center>
+            <center><b>Word Bank</b></center>
             {this.state.inventory.length>0 ? inv : invEmpty}
             <button className="p-2 btn btn-block" onClick={() => this.props.saveGame()}>Save</button>
           </center>
@@ -81,24 +81,38 @@ class ChapterOne extends React.Component{
   }
   
   render(){
-    const part0 = <p>insert starter here</p>;
+    const part0 = <p>Let's set the stage: you are an apple growing on a tree in late October... othewise known as prime apple-picking season - yikes. Even worse, an apple-collecting girl looks like she's just about to spot you. She looks up and, sure enough, locks eyes with you. The process of sensation to perception has begun. Let's start you off easy: which sensory pathway will you be "traveling down"?</p>;
     
-    const question0 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>I think a few more minutes won't harm me</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>No way I'm spending the day on my bed</button></p>;
-    const part1Bad = <p>P1BAD</p>;
-    const part1Good = <p>P2GOOD</p>;
+    const question0 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Auditory pathway</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Visual Pathway</button></p>;
+    const part0Bad = <p>Oof. This game might be a little difficult for you. Start over and I have a feeling you'll get this one right on your next try.</p>;
+    const part0Good = <p>That's right. Our ability to see and interpret the world around us is made possible biologically by the visual pathway. Now you're ready for your journey.</p>;
     
-    const part1 = <p>
-                    Anyways, if this works that means it should be a good idea to start writting some plot to make a good, interactive story.                    
-                  </p>;
-    
+    const part1 = <p>Your path begins as light enters the eye. But through which part of the eye do you enter?</p>;
+    const question1 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Pupil</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Cornea</button></p>;
+    const part1Bad = <p>WRONG</p>;
+    const part1Good = <p>RIGHT</p>;
+
+    const part2 = <p>Next Q</p>;
+    const question2 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>option correct</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>option wrong</button></p>;
+    const part2Bad = <p>WRONG again</p>;
+    const part2Good = <p>RIGHT again</p>;
+
     return(
       <p>
         {part0}
         {this.props.progress==0 && question0}
-        {this.props.progress>=1 && (this.props.choices[0]>=1 ? <p><i>No way I'm spending a saturday on my bed.</i> - you say.</p> : <p><i>I think a few more minutes won't harm me.</i> - you think.</p>)}
-        
-        {this.props.progress>=1 && (this.props.choices[0]==1 ? part1Good : part1Bad)}
-        {this.props.progress>=1 && part1}
+        {this.props.progress>=1 && (this.props.choices[0]==0 ? <p><i>Auditory pathway</i></p> : <p><i>Visual pathway</i></p>)}
+        {this.props.progress>=1 && (this.props.choices[0]==1 ? part0Good : part0Bad)}
+
+        {this.props.progress>=1 && (this.props.choices[0]==1 ? part1 : <p></p>)}
+        {this.props.progress==1 && (this.props.choices[0]==1 ? question1 : <p>Game over.</p>)}
+        {this.props.progress>=2 && (this.props.choices[1]==0 ? <p><i>Pupil</i></p> : <p><i>Cornea</i></p>)}
+        {this.props.progress>=2 && (this.props.choices[1]==1 ? part1Bad : part1Good)}
+
+        {this.props.progress>=1 && (this.props.choices[1]==0 ? part2 : <p></p>)}
+        {this.props.progress==2 && (this.props.choices[1]==0 ? question2 : <p>Game over.</p>)}
+        {this.props.progress>=3 && (this.props.choices[2]==0 ? <p><i>option correct</i></p> : <p><i>option incorrect</i></p>)}
+        {this.props.progress>=3 && (this.props.choices[2]==1 ? part2Bad : part2Good)}
       </p>
     )
   }
@@ -182,12 +196,12 @@ class Story extends React.Component{
     }
   }
   renderStory(){
-    if(this.state.progress>=0 & this.state.progress<=1){
+    if(this.state.progress>=0){
       return(<ChapterOne addChoice={this.addChoice.bind(this)} progress={this.state.progress} choices={this.state.choices} path={this.state.path} subpath={this.state.subpath}/>);
     }
-    else if(this.state.progress>=2 & this.state.progress<=2){
-      return(<ChapterTwo addChoice={this.addChoice.bind(this)} progress={this.state.progress} choices={this.state.choices} path={this.state.path} subpath={this.state.subpath}/>);
-    }
+    // else if(this.state.progress>=2 & this.state.progress<=2){
+    //   return(<ChapterTwo addChoice={this.addChoice.bind(this)} progress={this.state.progress} choices={this.state.choices} path={this.state.path} subpath={this.state.subpath}/>);
+    // }
   }
   ///////////////////////////
   render(){
