@@ -59,15 +59,6 @@ class HUD extends React.Component{
     return(
       <div className="py-2 sticky-top">
         <div class="nav flex-column">
-          <center>
-            <b>Status</b>
-            <br/>
-            You are on your way to the final stages of interpretation
-            <br/><br/>
-            <center><b>Word Bank</b></center>
-            {this.state.inventory.length>0 ? inv : invEmpty}
-            <button className="p-2 btn btn-block" onClick={() => this.props.saveGame()}>Save</button>
-          </center>
         </div>
       </div>
     )
@@ -112,6 +103,40 @@ class ChapterOne extends React.Component{
     const part5Bad = <p>This role is actually served by horizontal cells, which lie between photoreceptors and bipolar cells. Sorry!</p>;
     const part5Good = <p>Indeed; amacrine cells help detect light patterns that change over time. As our apple is picked off the tree, these cells will help detect the change in image!</p>;
 
+    const part6 = <p><b>Now, the message is transmitted to retinal ganglion cells. Which type of retinal ganglion cells receive input from the bipolar cells?</b></p>;
+    const question6 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>P ganglion cells</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>M ganglion cells</button></p>;
+    const part6Bad = <p>Nope - M ganglion cells receive input from diffuse bipolar cells.</p>;
+    const part6Good = <p>Bingo! P ganglion cells receive input from midget bipolar cells, notably transmitting images of fine visual acuity, color, and shapes.</p>;
+
+    const part7 = <p><b>Our image is finally leaving the retina! Where to next? (Hint: this part of the eye still contains ganglion cells!)</b></p>;
+    const question7 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Lateral geniculate nucleus</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Optic nerve</button></p>;
+    const part7Bad = <p>Nope, this was a tricky one. We will be heading toward the LGN, the retina does not connect directly to it. Good attempt!</p>;
+    const part7Good = <p>Right you are! The optic nerve is the next stop on our pathway... but I have a feeling we'll be seeing the other option pretty soon!</p>;
+
+    const part8 = <p><b>After transmitting through the optic nerve, optic chiasm, and optic tract, our apple image has reached the lateral geniculate nucleus. Which portion of the brain is this located it?</b></p>;
+    const question8 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Thalamus</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Hippocampus</button></p>;
+    const part8Bad = <p>:( Didn't think I'd ask about the brain, did ya? Not quite.</p>;
+    const part8Good = <p>Yes! Bonus info: retinotopic mapping in the LGN describes how the brain orderly maps information from the visual field to layers in the LGN. We're in the brain now! I promise you're almost there.</p>;
+
+    const part9 = <p><b>Following processing in the six layers of the LGN, info is passed along where to process visual information? (You've come this far - you've got this!)</b></p>;
+    const question9 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Middle temporal area</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Striate cortex</button></p>;
+    const part9Bad = <p>Nope - the middle temporal area is one of the four specialized brain areas involved in object detection - we're heading here but not quite there yet!</p>;
+    const part9Good = <p>Yup, processing continues in the striate cortex, also known as V1.</p>;
+
+    const part10 = <p><b>Now, processing is split between two higher-order pathways. Consider that the girl's gaze is focused upon the apple, an object. Which pathway will see to the apple being identified as an object?</b></p>;
+    const question10 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Ventral pathway</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Dorsal pathway</button></p>;
+    const part10Bad = <p>Not correct. The dorsal pathway, sometimes nicknamed the "where" pathway, is focused on spatial location and action.</p>;
+    const part10Good = <p>Hooray! You've identified the "what" pathway correctly! Here, the apple is identified, possibly using principles such as mid-level vision.</p>;
+
+    const part11 = <p><b>After the girl identifies the apple, she takes a wider look at the tree to see if there are any apples that would be better to pick. Which grouping principle enables the girl to identify the collection of apples on the tree as different from the collection of leaves?</b></p>;
+    const question11 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Similarity</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Good continuation</button></p>;
+    const part11Bad = <p>Good continuation relates to the contour of an image, not really applicable here.</p>;
+    const part11Good = <p>Yep, she groups all the similarly-looking apples as being part of one group, separate from the leaves of the tree. There are no better apples then the one she first spotted and she chooses to pick it :)</p>;
+
+    const part12 = <p><b>Finally, after picking the apple, she takes a step back to admire the lovely orchard. Which specialized face area is more likely to respond to this image?</b></p>;
+    const question12 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Extrastriate Body Area (EBA)</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Parahippocampal Place Area (PPA)</button></p>;
+    const part12Bad = <p>Heartbreaking - this is the last question. This is not the right specialized brain area. C'mon, give it one more try!</p>;
+    const part12Good = <p>CORRECT! Makes sense, right. With that, you've completed the visual pathway! Congratulations on finding your way from sensation to perception!</p>;
 
     return(
       <p>
@@ -122,7 +147,7 @@ class ChapterOne extends React.Component{
 
         {this.props.progress>=1 && (this.props.choices[0]==1 ? part1 : <p></p>)}
         {this.props.progress==1 && (this.props.choices[0]==1 ? question1 : <p>Game over.</p>)}
-        {this.props.progress>=2 && (this.props.choices[1]==0 ? <p><i>Pupil</i></p> : <p><i>Cornea</i></p>)}
+        {this.props.progress>=2 && (this.props.choices[1]==0 ? <p><i>Pupil</i></p> : <p><i>Iris</i></p>)}
         {this.props.progress>=2 && (this.props.choices[1]==0 ? part1Good : part1Bad)}
 
         {this.props.progress>=2 && (this.props.choices[1]==0 ? part2 : <p></p>)}
@@ -142,8 +167,43 @@ class ChapterOne extends React.Component{
 
         {this.props.progress>=5 && (this.props.choices[4]==0 ? part5 : <p></p>)}
         {this.props.progress==5 && (this.props.choices[4]==0 ? question5 : <p>Game over.</p>)}
-        {this.props.progress>=6 && (this.props.choices[5]==1 ? <p><i>Midget bipolar cells</i></p> : <p><i>Diffuse bipolar cells</i></p>)}
+        {this.props.progress>=6 && (this.props.choices[5]==0 ? <p><i>Lateral inhibition</i></p> : <p><i>Contrast enhancement and temporal sensitivity</i></p>)}
         {this.props.progress>=6 && (this.props.choices[5]==1 ? part5Good : part5Bad)}
+
+        {this.props.progress>=6 && (this.props.choices[5]==1 ? part6 : <p></p>)}
+        {this.props.progress==6 && (this.props.choices[5]==1 ? question6 : <p>Game over.</p>)}
+        {this.props.progress>=7 && (this.props.choices[6]==0 ? <p><i>P ganglion cells</i></p> : <p><i>M ganglion cells</i></p>)}
+        {this.props.progress>=7 && (this.props.choices[6]==0 ? part6Good : part6Bad)}
+
+        {this.props.progress>=7 && (this.props.choices[6]==0 ? part7 : <p></p>)}
+        {this.props.progress==7 && (this.props.choices[6]==0 ? question7 : <p>Game over.</p>)}
+        {this.props.progress>=8 && (this.props.choices[7]==0 ? <p><i>Lateral geniculate nucleus</i></p> : <p><i>Optic nerve</i></p>)}
+        {this.props.progress>=8 && (this.props.choices[7]==1 ? part7Good : part7Bad)}
+
+        {this.props.progress>=8 && (this.props.choices[7]==1 ? part8 : <p></p>)}
+        {this.props.progress==8 && (this.props.choices[7]==1 ? question8 : <p>Game over.</p>)}
+        {this.props.progress>=9 && (this.props.choices[8]==0 ? <p><i>Thalamus</i></p> : <p><i>Hippocampus</i></p>)}
+        {this.props.progress>=9 && (this.props.choices[8]==0 ? part8Good : part8Bad)}
+
+        {this.props.progress>=9 && (this.props.choices[8]==0 ? part9 : <p></p>)}
+        {this.props.progress==9 && (this.props.choices[8]==0 ? question9 : <p>Game over.</p>)}
+        {this.props.progress>=10 && (this.props.choices[9]==0 ? <p><i>Middle temporal area</i></p> : <p><i>Striate cortex</i></p>)}
+        {this.props.progress>=10 && (this.props.choices[9]==1 ? part9Good : part9Bad)}
+
+        {this.props.progress>=10 && (this.props.choices[9]==1 ? part10 : <p></p>)}
+        {this.props.progress==10 && (this.props.choices[9]==1 ? question10 : <p>Game over.</p>)}
+        {this.props.progress>=11 && (this.props.choices[10]==0 ? <p><i>Ventral pathway</i></p> : <p><i>Dorsal pathway</i></p>)}
+        {this.props.progress>=11 && (this.props.choices[10]==0 ? part10Good : part10Bad)}
+
+        {this.props.progress>=11 && (this.props.choices[10]==0 ? part11 : <p></p>)}
+        {this.props.progress==11 && (this.props.choices[10]==0 ? question11 : <p>Game over.</p>)}
+        {this.props.progress>=12 && (this.props.choices[11]==0 ? <p><i>Similarity</i></p> : <p><i>Good continuation</i></p>)}
+        {this.props.progress>=12 && (this.props.choices[11]==0 ? part11Good : part11Bad)}
+
+        {this.props.progress>=12 && (this.props.choices[11]==0 ? part12 : <p></p>)}
+        {this.props.progress==12 && (this.props.choices[11]==0 ? question12 : <p>Game over.</p>)}
+        {this.props.progress>=13 && (this.props.choices[12]==0 ? <p><i>Extrastriate Body Area (EBA)</i></p> : <p><i>Parahippocampal Place Area (PPA)</i></p>)}
+        {this.props.progress>=13 && (this.props.choices[12]==1 ? part12Good : part12Bad)}
       </p>
     )
   }
@@ -172,7 +232,12 @@ class Story extends React.Component{
       subpath: 0,
       inventory: [
         //Name, Description
-        ["Will to live", "Without this, you would be dead."]
+        ["Cones", "Specialized for daylight, respond best in photopic conditions, high visual acuity and color, ~4-5 million in retina"],
+        ["Rods", "Specialized for night vision, respond well in low light (scotopic), do not process color, ~90 mil in retina, higher in periphery, 1 type of pigment"],
+        ["Horizontal cells", "Responsible for lateral inhibition, creates the center-surround receptive field structure of retinal ganglion cells"],
+        ["Fovea", "Has one-to-one mapping of photoreceptors to ganglion cells"],
+        ["Parvocellular layers", "Carry info about fine spatial detail, 4 layers, get input from P ganglion cells"],
+        ["Retinotopic mapping", "The orderly mapping of the world in the LGN and striate cortex"],
       ],
       game: false
     };
@@ -254,7 +319,7 @@ class Story extends React.Component{
                 this.renderStory()
                 :
                 <p>Welcome to my Sensory Pathway Project.<br/><br/>
-                  For this interactive game I've coded, you will simulate "being" a visual stimulus and track your progress from initial sensation to the final stages of interpretation! To play, simply answer the questions to try and correctly identify steps along the visual pathway. The word bank on the left will not provide the EXACT answers you need, but it will provide some helpful clues along the way! Click on any term to reveal more information. Finally, in this game, there are NO second chances! If you make a wrong selection, you'll have to refresh the page and start over! Get started below and good luck!
+                  For this interactive game I've coded, you will simulate a visual stimulus and track your progress from initial sensation to the final stages of interpretation! To play, simply answer the questions to try and correctly identify steps along the visual pathway. Finally, in this game, there are NO second chances! If you make a wrong selection, you'll have to refresh the page and start over! Get started below and good luck!
                    <br/><br/>
                    <center>
                     <button className="btn" onClick={() => this.startGame()}>Start game</button> <button className="btn" onClick={() => this.loadGame()}>Load Game</button>
