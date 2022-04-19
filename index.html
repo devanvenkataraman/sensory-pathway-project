@@ -81,21 +81,37 @@ class ChapterOne extends React.Component{
   }
   
   render(){
-    const part0 = <p>Let's set the stage: you are an apple growing on a tree in late October... othewise known as prime apple-picking season - yikes. Even worse, an apple-collecting girl looks like she's just about to spot you. She looks up and, sure enough, locks eyes with you. The process of sensation to perception has begun. Let's start you off easy: which sensory pathway will you be "traveling down"?</p>;
+    const part0 = <p><b>Let's set the stage: There is an apple growing on a tree in late October, on a beautiful New England orchard. A girl, furiously collecting apples, looks like she's just about to spot the apple. She looks up and, sure enough, locks eyes with it. The process of sensation to perception has begun. Let's start you off easy: which sensory pathway will the apple be "traveling down"?</b></p>;
     
-    const question0 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Auditory pathway</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Visual Pathway</button></p>;
+    const question0 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Auditory pathway</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Visual pathway</button></p>;
     const part0Bad = <p>Oof. This game might be a little difficult for you. Start over and I have a feeling you'll get this one right on your next try.</p>;
-    const part0Good = <p>That's right. Our ability to see and interpret the world around us is made possible biologically by the visual pathway. Now you're ready for your journey.</p>;
+    const part0Good = <p>That's right. Our ability to see and interpret the world around us is made possible by the visual pathway. Now you're ready for your journey.</p>;
     
-    const part1 = <p>Your path begins as light enters the eye. But through which part of the eye do you enter?</p>;
-    const question1 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Pupil</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Cornea</button></p>;
-    const part1Bad = <p>WRONG</p>;
-    const part1Good = <p>RIGHT</p>;
+    const part1 = <p><b>Your path begins as light enters the eye. But through which part of the eye do you enter?</b></p>;
+    const question1 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Pupil</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Iris</button></p>;
+    const part1Bad = <p>Not quite. The iris is responsible for regulating the light that enters the eye through contraction and expansion, but light does not actually enter the eye via the iris.</p>;
+    const part1Good = <p>That's right, light enters the eye through the pupil. That's exactly why the pupil appears black - it absorbs all light that passes through it! Let's keep moving.</p>;
 
-    const part2 = <p>Next Q</p>;
-    const question2 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>option correct</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>option wrong</button></p>;
-    const part2Bad = <p>WRONG again</p>;
-    const part2Good = <p>RIGHT again</p>;
+    const part2 = <p><b>Now the light of the apple has entered the eye. But the journey has just begun! Which part of the eye contains photoreceptors where the process of transduction will take place?</b></p>;
+    const question2 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Retina</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Vitreous humor</button></p>;
+    const part2Bad = <p>The vitreous humor is fluid that simply fills the chamber in the posterior part of the eye. No transduction occurring here!</p>;
+    const part2Good = <p>That's three in a row! Yep, the retina is the site of transduction. But let's not move on from the retina too fast; a lot is going to happen to our apple image here.</p>;
+
+    const part3 = <p><b>You may already know that there are rods and cones located in the retina. Now remember that the girl focused directly on the apple, likely centering it in her gaze. In addition, our scenario is in broad daylight and of course our apple has a vibrant red color, since it's October! Which of these two kinds of photoreceptors is more likely to have processed much of the image?</b></p>;
+    const question3 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Rods</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Cones</button></p>;
+    const part3Bad = <p>Hmmm. Check the word bank for "rods" and see why this might not be the case.</p>;
+    const part3Good = <p>Ding ding, correct! Cones help process much of this particular image for a few reasons: the image is in a photopic setting, the image has lots of color, and the image is processed in the central area of the field of vision.</p>;
+
+    const part4 = <p><b>Now things get cellular and bit more confusing... so let's get things straight: we have two types of bipolar cells, both of which synapse with our aforementioned photoreceptors. Which type of bipolar cell receives input from central field of vision and is known for its high acuity? We focus on this one since our image is received by cones in the fovea.</b></p>;
+    const question4 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Midget bipolar cells</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Diffuse bipolar cells</button></p>;
+    const part4Bad = <p>This was a tough one, but this isn't right. Diffuse bipolar cells receive input from multiple photorecptors and is common in the periphery. It also has low acuity.</p>;
+    const part4Good = <p>Yes! Midget bipolar cells are correct. Let's dig even deeper!</p>;
+
+    const part5 = <p><b>Now the message has been transmitted from photoreceptors to bipolar cells, but there are more cells awaiting! Our apple image is transmitted to ganglion cells, but amacrine cells lie between which serve what role?</b></p>;
+    const question5 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Lateral inhibition</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Contrast enhancement and temporal sensitivity</button></p>;
+    const part5Bad = <p>This role is actually served by horizontal cells, which lie between photoreceptors and bipolar cells. Sorry!</p>;
+    const part5Good = <p>Indeed; amacrine cells help detect light patterns that change over time. As our apple is picked off the tree, these cells will help detect the change in image!</p>;
+
 
     return(
       <p>
@@ -107,12 +123,27 @@ class ChapterOne extends React.Component{
         {this.props.progress>=1 && (this.props.choices[0]==1 ? part1 : <p></p>)}
         {this.props.progress==1 && (this.props.choices[0]==1 ? question1 : <p>Game over.</p>)}
         {this.props.progress>=2 && (this.props.choices[1]==0 ? <p><i>Pupil</i></p> : <p><i>Cornea</i></p>)}
-        {this.props.progress>=2 && (this.props.choices[1]==1 ? part1Bad : part1Good)}
+        {this.props.progress>=2 && (this.props.choices[1]==0 ? part1Good : part1Bad)}
 
-        {this.props.progress>=1 && (this.props.choices[1]==0 ? part2 : <p></p>)}
+        {this.props.progress>=2 && (this.props.choices[1]==0 ? part2 : <p></p>)}
         {this.props.progress==2 && (this.props.choices[1]==0 ? question2 : <p>Game over.</p>)}
-        {this.props.progress>=3 && (this.props.choices[2]==0 ? <p><i>option correct</i></p> : <p><i>option incorrect</i></p>)}
-        {this.props.progress>=3 && (this.props.choices[2]==1 ? part2Bad : part2Good)}
+        {this.props.progress>=3 && (this.props.choices[2]==0 ? <p><i>Retina</i></p> : <p><i>Vitreous humor</i></p>)}
+        {this.props.progress>=3 && (this.props.choices[2]==0 ? part2Good : part2Bad)}
+
+        {this.props.progress>=3 && (this.props.choices[2]==0 ? part3 : <p></p>)}
+        {this.props.progress==3 && (this.props.choices[2]==0 ? question3 : <p>Game over.</p>)}
+        {this.props.progress>=4 && (this.props.choices[3]==1 ? <p><i>Cones</i></p> : <p><i>Rods</i></p>)}
+        {this.props.progress>=4 && (this.props.choices[3]==1 ? part3Good : part3Bad)}
+
+        {this.props.progress>=4 && (this.props.choices[3]==1 ? part4 : <p></p>)}
+        {this.props.progress==4 && (this.props.choices[3]==1 ? question4 : <p>Game over.</p>)}
+        {this.props.progress>=5 && (this.props.choices[4]==0 ? <p><i>Midget bipolar cells</i></p> : <p><i>Diffuse bipolar cells</i></p>)}
+        {this.props.progress>=5 && (this.props.choices[4]==0 ? part4Good : part4Bad)}
+
+        {this.props.progress>=5 && (this.props.choices[4]==0 ? part5 : <p></p>)}
+        {this.props.progress==5 && (this.props.choices[4]==0 ? question5 : <p>Game over.</p>)}
+        {this.props.progress>=6 && (this.props.choices[5]==1 ? <p><i>Midget bipolar cells</i></p> : <p><i>Diffuse bipolar cells</i></p>)}
+        {this.props.progress>=6 && (this.props.choices[5]==1 ? part5Good : part5Bad)}
       </p>
     )
   }
